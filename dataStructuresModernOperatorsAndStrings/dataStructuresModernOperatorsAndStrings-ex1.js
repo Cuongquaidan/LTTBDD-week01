@@ -24,39 +24,53 @@
 // Test data for 6.: First, use players 'Davies', 'Muller', 'Lewandowski' and 'Kimmich'.
 // Then, call the function again with players from game.scored
 
-let players1 = [
-    "Manuel Neuer",
-    "Dayot Upamecano",
-    " Kim Min-jae",
-    "Matthijs de Ligt",
-    "Benjamin Pavard",
-    "Kimmich",
-    " Serge Gnabry",
-    "Muller",
-    "Davies",
-    "Lewandowski",
-];
-let players2 = [
-    "Marc-Andre ter Stegen",
-    " Sergino Dest",
-    "Gerard Pique",
-    "Ronald Araujo",
-    "Sergio Busquets",
-    " Alex Collado",
-    "Ousmane Dembele",
-    "Pedri",
-    "Robert Lewandowski",
-    " Ansu Fati",
-    "Martin Braithwaite",
-];
+const game = {
+    team1: "Bayern Munich",
+    team2: "Borrussia Dortmund",
+    players: [
+        [
+            "Neuer",
+            "Pavard",
+            "Martinez",
+            "Alaba",
+            "Davies",
+            "Kimmich",
+            "Goretzka",
+            "Coman",
+            "Muller",
+            "Gnarby",
+            "Lewandowski",
+        ],
+        [
+            "Burki",
+            "Schulz",
+            "Hummels",
+            "Akanji",
+            "Hakimi",
+            "Weigl",
+            "Witsel",
+            "Hazard",
+            "Brandt",
+            "Sancho",
+            "Gotze",
+        ],
+    ],
+    score: "4:0",
+    scored: ["Lewandowski", "Gnarby", "Lewandowski", "Hummels"],
+    date: "Nov 9th, 2037",
+    odds: {
+        team1: 1.33,
+        x: 3.25,
+        team2: 6.5,
+    },
+};
 
-let gk1 = players1[0];
-let fieldPlayers1 = players1.slice(1, 11);
+let gk1 = game.players[0][0];
+let fieldPlayers1 = game.players[0].slice(1, 11);
 let substitute1 = ["Thiago", "Coutinho", "Perisic"];
 let allPlayers1 = fieldPlayers1.concat(substitute1);
-let team1 = 1.5;
-let team2 = 9.0;
-let draw = 4.2;
+console.log(gk1);
+console.log(allPlayers1);
 
 function printGoals(...players) {
     for (let i = 0; i < players.length; i++) {
@@ -64,6 +78,6 @@ function printGoals(...players) {
     }
     console.log(`Total goals: ${players.length}`);
 }
-printGoals("Davies", "Muller", "Lewandowski", "Kimmich");
-team1 < team2 && console.log(`Bayern is more likely to win.`);
-team1 > team2 && console.log(`Barca is more likely to win.`);
+printGoals(...game.scored);
+game.team1 < game.team2 && console.log(`Bayern is more likely to win.`);
+game.team1 > game.team2 && console.log(`Barca is more likely to win.`);
